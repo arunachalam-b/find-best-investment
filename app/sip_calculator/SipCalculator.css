@@ -66,3 +66,23 @@
     font-size: 18px;
     font-weight: bold;
 }
+
+.chipGroup {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.chip {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.chip.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}

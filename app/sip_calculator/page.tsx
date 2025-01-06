@@ -59,25 +59,19 @@ const SipCalculator = () => {
     return (
         <div className="container">
             <h1 className="header">Investment Calculator</h1>
-            <div className="radioGroup">
-                <label>
-                    <input
-                        type="radio"
-                        value="sip"
-                        checked={calculatorType === 'sip'}
-                        onChange={() => setCalculatorType('sip')}
-                    />
+            <div className="chipGroup">
+                <div
+                    className={`chip ${calculatorType === 'sip' ? 'active' : ''}`}
+                    onClick={() => setCalculatorType('sip')}
+                >
                     SIP Calculator
-                </label>
-                <label>
-                    <input
-                        type="radio"
-                        value="lumpsum"
-                        checked={calculatorType === 'lumpsum'}
-                        onChange={() => setCalculatorType('lumpsum')}
-                    />
+                </div>
+                <div
+                    className={`chip ${calculatorType === 'lumpsum' ? 'active' : ''}`}
+                    onClick={() => setCalculatorType('lumpsum')}
+                >
                     Lumpsum
-                </label>
+                </div>
             </div>
             <div className="inputGroup">
                 <label className="label">Monthly Investment:</label>
