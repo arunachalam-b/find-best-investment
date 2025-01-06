@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './SipCalculator.css';
 
 const SipCalculator = () => {
+    const [calculatorType, setCalculatorType] = useState('sip');
     const [monthlyInvestment, setMonthlyInvestment] = useState('');
     const [annualInterestRate, setAnnualInterestRate] = useState('');
     const [investmentPeriod, setInvestmentPeriod] = useState('');
@@ -34,9 +35,50 @@ const SipCalculator = () => {
         setEstimatedReturns(formatNumber(returns.toFixed(2)));
     };
 
+    const calculateLumpsum = () => {
+        const P = parseFloat(monthlyInvestment);
+        const r = parseFloat(annualInterestRate) / 100;
+        const n = parseFloat(investmentPeriod);
+        const FV = P * Math.pow(1 + r, n);
+        const invested = P;
+        const returns = FV - invested;
+
+        setFutureValue(formatNumber(FV.toFixed(2)));
+        setInvestedAmount(formatNumber(invested.toFixed(2)));
+        setEstimatedReturns(formatNumber(returns.toFixed(2)));
+    };
+
+    const handleCalculate = () => {
+        if (calculatorType === 'sip') {
+            calculateSIP();
+        } else {
+            calculateLumpsum();
+        }
+    };
+
     return (
         <div className="container">
-            <h1 className="header">SIP Calculator</h1>
+            <h1 className="header">Investment Calculator</h1>
+            <div className="radioGroup">
+                <label>
+                    <input
+                        type="radio"
+                        value="sip"
+                        checked={calculatorType === 'sip'}
+                        onChange={() => setCalculatorType('sip')}
+                    />
+                    SIP Calculator
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        value="lumpsum"
+                        checked={calculatorType === 'lumpsum'}
+                        onChange={() => setCalculatorType('lumpsum')}
+                    />
+                    Lumpsum
+                </label>
+            </div>
             <div className="inputGroup">
                 <label className="label">Monthly Investment:</label>
                 <input
@@ -64,7 +106,7 @@ const SipCalculator = () => {
                     className="input"
                 />
             </div>
-            <button onClick={calculateSIP} className="button">Calculate</button>
+            <button onClick={handleCalculate} className="button">Calculate</button>
             {futureValue && (
                 <div className="result">
                     <div className="resultRow">
