@@ -21,7 +21,7 @@ export default function Home() {
         </div>
       </main>
       <footer className={styles.footer}>
-        <p>© {year} Investment Finder. All rights reserved.</p>
+        <p>© {year} Best Investment Finder. All rights reserved.</p>
       </footer>
     </div>
   );
