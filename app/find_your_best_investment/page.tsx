@@ -6,12 +6,12 @@ const FindYourBestInvestment = () => {
     const [amount, setAmount] = useState<number | string>(0);
     const [years, setYears] = useState<number | string>(0);
     const investmentOptions = [
-        { name: 'Stock Index', rate: 0.08 },
-        { name: 'Mutual Funds', rate: 0.07 },
-        { name: 'FDs', rate: 0.05 },
-        { name: 'Liquid Funds', rate: 0.04 },
+        { name: 'Stock Index (NIFTY)', rate: 0.12 },
+        { name: 'Mutual Funds', rate: 0.10 },
+        { name: 'FDs', rate: 0.08 },
+        { name: 'Liquid Funds', rate: 0.07 },
         { name: 'Bonds', rate: 0.06 },
-        { name: 'T-Bills', rate: 0.03 }
+        { name: 'T-Bills', rate: 0.04 }
     ];
 
     const calculateReturns = (amount: number, years: number, rate: number) => {
